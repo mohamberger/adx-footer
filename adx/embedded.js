@@ -1,31 +1,30 @@
 window.adxApp =
   window.adxApp ||
   (() => {
-    const embeddedFooters = document.querySelectorAll(
-      ".adx-footer a[href^='https://www.allesdigital.io']"
-    );
+    const embeddedFooters = document.querySelectorAll(".adx-footer");
+
+    var styles = {
+      adxStyleProps:
+        "margin: 0; background: rgb(36, 99, 235); background: linear-gradient(90deg, rgba(36, 99, 235, 1) 0%, rgba(139, 92, 246, 1) 100%); display: flex; justify-content: center; padding: 0.25rem; color: white; font-family: 'Inter', sans-serif;",
+      adxFooterTextStyles: "margin: 0;",
+      adxStyleLink: "color: white;",
+    };
 
     for (const embeddedFooter of embeddedFooters) {
-      const url = new URL(embeddedFooter.getAttribute("href"));
+      const adxFooter = document.createElement("div");
+      const adxFooterText = document.createElement("p");
+      const adxLink = document.createElement("a");
 
-      const widget = document.createElement("iframe");
-      widget.setAttribute("scrolling", "no");
-      widget.setAttribute("allowtransparency", "true");
-      widget.setAttribute("allowfullscreen", "true");
-      widget.setAttribute("frameborder", 0);
-      widget.style.position = "static";
-      widget.style.visibility = "visible";
-      widget.style.width = "560px";
-      widget.style.height = "690px";
-      widget.style.display = "block";
-      widget.style.flexGrow = 1;
-      widget.src = "http://127.0.0.1:3001/";
+      adxFooterText.innerText = "Made with ♥ by ";
+      adxLink.innerText = " allesdigital";
+      adxLink.href = "https://www.allesdigital.io";
 
-      const container = document.createElement("div");
-      container.classList.add("adx-footer");
-      container.classList.add("adx-footer-rendered");
-      container.appendChild(widget);
+      adxFooter.style = styles.adxStyleProps;
+      adxFooterText.style = styles.adxFooterTextStyles;
+      adxLink.style = styles.adxStyleLink;
 
-      embeddedFooter.closest(".adx-footer").replaceWith(container);
+      embeddedFooter.appendChild(adxFooter);
+      adxFooter.appendChild(adxFooterText);
+      adxFooterText.appendChild(adxLink);
     }
   })();
