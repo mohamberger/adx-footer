@@ -1,13 +1,12 @@
-window.twitterApp =
-  window.twitterApp ||
+window.adxApp =
+  window.adxApp ||
   (() => {
-    const embeddedTweets = document.querySelectorAll(
-      ".twitter-tweet a[href^='https://twitter.com']"
+    const embeddedFooters = document.querySelectorAll(
+      ".adx-footer a[href^='https://www.allesdigital.io']"
     );
-    const origin = new URL(document.currentScript.src).origin;
 
-    for (const embeddedTweet of embeddedTweets) {
-      const url = new URL(embeddedTweet.getAttribute("href"));
+    for (const embeddedFooter of embeddedFooters) {
+      const url = new URL(embeddedFooter.getAttribute("href"));
 
       const widget = document.createElement("iframe");
       widget.setAttribute("scrolling", "no");
@@ -20,13 +19,13 @@ window.twitterApp =
       widget.style.height = "690px";
       widget.style.display = "block";
       widget.style.flexGrow = 1;
-      widget.src = origin + "/embed" + url.pathname;
+      widget.src = origin + "/embedded" + url.pathname;
 
       const container = document.createElement("div");
-      container.classList.add("twitter-tweet");
-      container.classList.add("twitter-tweet-rendered");
+      container.classList.add("adx-footer");
+      container.classList.add("adx-footer-rendered");
       container.appendChild(widget);
 
-      embeddedTweet.closest(".twitter-tweet").replaceWith(container);
+      embeddedFooter.closest(".adx-footer").replaceWith(container);
     }
   })();
