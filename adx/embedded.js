@@ -19,7 +19,7 @@ window.adxApp =
       widget.style.height = "690px";
       widget.style.display = "block";
       widget.style.flexGrow = 1;
-      widget.src = origin + "/embedded" + url.pathname;
+      widget.src = "http://127.0.0.1:3001/";
 
       const container = document.createElement("div");
       container.classList.add("adx-footer");

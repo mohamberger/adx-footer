@@ -3,13 +3,13 @@ services:
   web1:
     image: caddy:2.6.2-alpine
     volumes:
-      - ./public:/usr/share/caddy
+      - ./adx:/usr/share/caddy/
     ports:
       - 127.0.0.1:3001:80
 
   web2:
     image: caddy:2.6.2-alpine
     volumes:
-      - ./public:/kunden
+      - ./kunden:/usr/share/caddy/
     ports:
       - 127.0.0.1:3002:80
